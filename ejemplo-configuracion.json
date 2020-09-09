@@ -1,0 +1,33 @@
+[
+	{
+		
+		"TYPE" : "client|master" ,
+		"ENGINE": "mssql7|oci8",
+		"DB_NAME": "NOMBRE DE LA BASE DE DATOS",
+		"DB_USER": "USUARIO CON PERMISOS DDL",
+		"DB_PASSWORD": "CONTRASEÑA DEL USUARIO",
+		"DB_HOST": "HOST DEL SERVIDOR DE BD",
+		"DB_PORT": "PUERTO DEL SERVIDOR DE BD",
+		"DB_ENV" : "SOLO OBLIGATORIO PARA ORACLE"
+	},
+		{
+		"TYPE" : "" ,
+		"ENGINE": "",
+		"DB_NAME": "",
+		"DB_USER": "",
+		"DB_PASSWORD": "",
+		"DB_HOST": "",
+		"DB_PORT": "",
+		"DB_ENV" : ""
+	},
+		{
+		"TYPE" : "" ,
+		"ENGINE": "",
+		"DB_NAME": "",
+		"DB_USER": "",
+		"DB_PASSWORD": "",
+		"DB_HOST": "",
+		"DB_PORT": "",
+		"DB_ENV" : ""
+	}
+]

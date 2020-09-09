@@ -1,0 +1,42 @@
+[
+	{
+		"TYPE" : "client" ,
+		"ENGINE": "mssql7",
+		"DB_NAME": "Client2",
+		"DB_USER": "sa",
+		"DB_PASSWORD": "systemadministrator",
+		"DB_HOST": "10.0.2.2",
+		"DB_PORT": "1433",
+		"DB_ENV" : ""
+	},
+		{
+		"TYPE" : "client" ,
+		"ENGINE": "mssql7",
+		"DB_NAME": "Client3",
+		"DB_USER": "sa",
+		"DB_PASSWORD": "systemadministrator",
+		"DB_HOST": "10.0.2.2",
+		"DB_PORT": "1433",
+		"DB_ENV" : ""
+	},
+		{
+		"TYPE" : "master" ,
+		"ENGINE": "mssql7",
+		"DB_NAME": "Optimum_Master2",
+		"DB_USER": "sa",
+		"DB_PASSWORD": "systemadministrator",
+		"DB_HOST": "10.0.2.2",
+		"DB_PORT": "1433",
+		"DB_ENV" : ""
+	},
+		{
+		"TYPE" : "client" ,
+		"ENGINE": "mssql7",
+		"DB_NAME": "Client4",
+		"DB_USER": "sa",
+		"DB_PASSWORD": "systemadministrator",
+		"DB_HOST": "10.0.2.2",
+		"DB_PORT": "1433",
+		"DB_ENV" : ""
+	}
+]
