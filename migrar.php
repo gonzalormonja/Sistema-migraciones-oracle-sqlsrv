@@ -8,17 +8,17 @@
         die();
     }
     foreach($data2 as $d){
-        validacion($d);
         $db = [
-            'HOST' => $d['DB_HOST'],
-            'DB' =>   $d['DB_NAME'],
-            'USER' => $d['DB_USER'],
-            'PORT' => $d['DB_PORT'],
-            'PASS' => $d['DB_PASSWORD'],
-            'ENGINE' => $d['ENGINE'],
-            'SID' =>  isset($d['DB_ENV']) ? $d['DB_ENV'] : '',
-            'TYPE' => $d['TYPE']
+            'HOST' => strtolower($d['DB_HOST']),
+            'DB' =>   ($d['DB_NAME']),
+            'USER' => ($d['DB_USER']),
+            'PORT' => ($d['DB_PORT']),
+            'PASS' => ($d['DB_PASSWORD']),
+            'ENGINE' => strtolower($d['ENGINE']),
+            'SID' =>  isset($d['DB_ENV']) ? strtoupper($d['DB_ENV']) : '',
+            'TYPE' => strtolower($d['TYPE'])
         ];
+        validacion($db);
         $conexion = generarConexion($db);
         if($conexion!==true){
             $val=false;
@@ -34,6 +34,7 @@
         foreach($dbs as $d){
         //ARCHIVO DE CONFIGURACION
             echo "\nCOMENZANDO CONFIGURACION DE BASE DE DATOS ".$d['DB']."\n\n";
+            $bd = $d['DB'];
             if(strtolower($d['ENGINE'])=="oci8"){
                 $d['DB'] = $d['SID'];
                 $d['ENGINE'] = "oracle";
@@ -53,21 +54,21 @@
             ";
             $fp = fopen($env,"r+") or die("ocurrio un error");
             file_put_contents($env,$conf);
-            echo "TERMINADA CONFIGURACION DE BASE DE DATOS ".$d['DB']."\n\n";
+            echo "TERMINADA CONFIGURACION DE BASE DE DATOS ".$bd."\n\n";
         //FIN ARCHIVO CONFIGURACION
 
         //BORRAMOS ARCHIVOS ANTERIORES
-            echo "\nLIMPIANDO SCRIPTS PARA BASE DE DATOS ".$d['DB']."\n\n";
+            echo "\nLIMPIANDO SCRIPTS PARA BASE DE DATOS ".$bd."\n\n";
             $archivos= glob($database.'*.*');
             foreach ($archivos as $archivo){
                 $archivo_borrar = $archivo;
                 unlink($archivo_borrar);
             }
-            echo "\nFIN LIMPIADO DE SCRIPTS PARA BASE DE DATOS ".$d['DB']."\n\n";
+            echo "\nFIN LIMPIADO DE SCRIPTS PARA BASE DE DATOS ".$bd."\n\n";
         //FIN BORRADO ARCHIVOS ANTERIORES
 
         //PASO ARCHIVOS A CARPETA MIGRACION
-            echo "\nOBTENIENDO SCRIPTS PARA BASE DE DATOS ".$d['DB']."\n\n";
+            echo "\nOBTENIENDO SCRIPTS PARA BASE DE DATOS ".$bd."\n\n";
             if(strtolower($d['TYPE'])=='master'){
                 $dirScripts = $dir."database/migrationsMaster/";
             }else{
@@ -79,11 +80,11 @@
                 $archivo_copiar= str_replace($dirScripts, $database, $archivo);
                 copy($archivo, $archivo_copiar);
             }
-            echo "\nSCRIPTS OBTENIDOS CORRECTAMENTE PARA BASE DE DATOS ".$d['DB']."\n\n";
+            echo "\nSCRIPTS OBTENIDOS CORRECTAMENTE PARA BASE DE DATOS ".$bd."\n\n";
         //FIN PASO ARCHIVOS A CARPETA MIGRACION
 
         //COMENZANDO MIGRACION
-            echo "\nMIGRANDO BASE DE DATOS ".$d['DB']."\n\n";
+            echo "\nMIGRANDO BASE DE DATOS ".$bd."\n\n";
             $command = "cd Sistema-migraciones-oracle-sqlsrv/ && php artisan migrate";
             echo shell_exec($command);
         //MIGRACION TERMINADA
@@ -91,9 +92,6 @@
     }else{
         echo "\nHAY ERRORES EN LA CONFIGURACION\n";
     }
-
-
-
 
 
 
@@ -197,23 +195,23 @@
             echo "\nTYPE NO ADMITIDO, VALORES POSIBLES: client O master\n\n";
             $val = false;
         }
-        if($d['DB_NAME']==""){
+        if($d['DB']==""){
             echo "\nEL NOMBRE DE LA BASE DE DATOS(DB_NAME) NO PUEDE ESTAR VACIO\n\n";
             $val = false;
         }
-        if($d['DB_USER']==""){
+        if($d['USER']==""){
             echo "\nEL NOMBRE DEL USUARIO(DB_USER) NO PUEDE ESTAR VACIO\n\n";
             $val = false;
         }
-        if($d['DB_PASSWORD']==""){
+        if($d['PASS']==""){
             echo "\nLA CONTRASEÑA(DB_PASSWORD) NO PUEDE ESTAR VACIO\n\n";
             $val = false;
         }
-        if($d['DB_HOST']==""){
+        if($d['HOST']==""){
             echo "\nEL HOST(DB_HOST) NO PUEDE ESTAR VACIO\n\n";
             $val = false;
         }
-        if($d['DB_PORT']==""){
+        if($d['PORT']==""){
             echo "\nEL PUERTO(DB_PORT) NO PUEDE ESTAR VACIO\n\n";
             $val = false;
         }

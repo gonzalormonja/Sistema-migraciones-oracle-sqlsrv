@@ -5,19 +5,19 @@
 		"DB_NAME": "Client2",
 		"DB_USER": "sa",
 		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "10.0.2.2",
+		"DB_HOST": "192.168.1.95",
 		"DB_PORT": "1433",
-		"DB_ENV" : ""
+		"DB_ENV" : "SQLEXPRESS"
 	},
 		{
 		"TYPE" : "client" ,
-		"ENGINE": "mssql7",
-		"DB_NAME": "Client3",
-		"DB_USER": "sa",
-		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "10.0.2.2",
-		"DB_PORT": "1433",
-		"DB_ENV" : ""
+		"ENGINE": "OCI8",
+		"DB_NAME": "CLIENT1",
+		"DB_USER": "CLIENT1",
+		"DB_PASSWORD": "CLIENT1",
+		"DB_HOST": "192.168.1.95",
+		"DB_PORT": "1521",
+		"DB_ENV" : "ORCL"
 	},
 		{
 		"TYPE" : "master" ,
@@ -25,9 +25,9 @@
 		"DB_NAME": "Optimum_Master2",
 		"DB_USER": "sa",
 		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "10.0.2.2",
+		"DB_HOST": "192.168.1.95",
 		"DB_PORT": "1433",
-		"DB_ENV" : ""
+		"DB_ENV" : "SQLEXPRESS"
 	},
 		{
 		"TYPE" : "client" ,
@@ -35,8 +35,8 @@
 		"DB_NAME": "Client4",
 		"DB_USER": "sa",
 		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "10.0.2.2",
+		"DB_HOST": "192.168.1.95",
 		"DB_PORT": "1433",
-		"DB_ENV" : ""
+		"DB_ENV" : "SQLEXPRESS"
 	}
 ]

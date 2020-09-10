@@ -26,7 +26,7 @@ class CreateMEventTable extends Migration
             $table->string('cnc_id', 32)->default('-1');
             $table->dateTime('datetime_pc')->useCurrent();
             $table->unique(['meter_id', 'event_id', 'meter_t', 'add_data'], 'IX_m_event_m_event');
-            $table->index(['meter_id', 'meter_t', 'local_t', 'ms', 'add_data', 'add_data2', 'report', 'cnc_id', 'datetime_pc'], 'IX_m_event_datetime_pc_m_event');
+            $table->index(['meter_id', 'meter_t', 'local_t', 'ms', 'report', 'cnc_id', 'datetime_pc'], 'IX_m_event_datetime_pc_m_event');
         });
     }
 
