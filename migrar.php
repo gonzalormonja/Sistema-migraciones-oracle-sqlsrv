@@ -89,7 +89,7 @@
             echo shell_exec($command);
         //MIGRACION TERMINADA
         }
-        echo "\nLA MIGRACION TERMINO."
+        echo "\nLA MIGRACION TERMINO.";
     }else{
         echo "\nHAY ERRORES EN LA CONFIGURACION\n";
     }
