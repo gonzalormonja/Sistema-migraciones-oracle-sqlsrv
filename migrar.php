@@ -52,7 +52,7 @@
             DB_USERNAME=".$d['USER']."
             DB_PASSWORD=".$d['PASS']."
             ";
-            $fp = fopen($env,"r+") or die("ocurrio un error");
+            //$fp = fopen($env,"r+") or die("ocurrio un error");
             file_put_contents($env,$conf);
             echo "TERMINADA CONFIGURACION DE BASE DE DATOS ".$bd."\n\n";
         //FIN ARCHIVO CONFIGURACION
@@ -89,6 +89,7 @@
             echo shell_exec($command);
         //MIGRACION TERMINADA
         }
+        echo "\nLA MIGRACION TERMINO."
     }else{
         echo "\nHAY ERRORES EN LA CONFIGURACION\n";
     }
