@@ -37,7 +37,11 @@ class Sequence
         }
 
         $name = $this->wrap($name);
-
+        $name2 = explode(" ",$name);
+        $name = "";
+        foreach($name2 as $n){
+            $name .= $n;
+        }
         $nocache = $nocache ? 'nocache' : '';
 
         $max = $max ? " maxvalue {$max}" : '';

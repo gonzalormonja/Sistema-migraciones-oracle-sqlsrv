@@ -11,7 +11,7 @@
             "request": "launch",
             "port": 9000,
             "pathMappings": {
-                "/var/www/html/optimum/optimum-mdm/laravel/laravel": "C:\\vagrantBoxes\\esg.puphpet.local\\esg\\optimum-mdm\\laravel\\laravel"
+                "/var/www/html/Sistema-migraciones-oracle-sqlsrv": "C:\\vagrantBox\\probandoLaravel\\proyectos\\Sistema-migraciones-oracle-sqlsrv"
             }
         },
         {

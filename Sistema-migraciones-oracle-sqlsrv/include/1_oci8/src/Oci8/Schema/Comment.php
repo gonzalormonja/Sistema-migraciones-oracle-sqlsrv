@@ -90,7 +90,10 @@ class Comment extends Grammar
         $table  = $this->wrapValue($table);
         $table  = $this->connection->getTablePrefix() . $table;
         $column = $this->wrapValue($column);
-
+        $c = explode("\"",$column);
+        if(isset($c[1])){
+            $column = $c[1];
+        }
         $this->connection->statement("comment on column {$table}.{$column} is '{$comment}'");
     }
 

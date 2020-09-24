@@ -396,7 +396,7 @@ class SqlServerGrammar extends Grammar
      */
     protected function typeText(Fluent $column)
     {
-        return 'nvarchar(max)';
+        return 'text';
     }
 
     /**
@@ -803,8 +803,11 @@ class SqlServerGrammar extends Grammar
      */
     protected function modifyCollate(Blueprint $blueprint, Fluent $column)
     {
-        if (! is_null($column->collation)) {
+        /*if (! is_null($column->collation)) {
             return ' collate '.$column->collation;
+        }*/
+        if($column->type=="string" || $column->type=="text" || $column->type=="char"){
+            return ' collate Modern_Spanish_CI_AS';
         }
     }
 
@@ -832,7 +835,14 @@ class SqlServerGrammar extends Grammar
     protected function modifyDefault(Blueprint $blueprint, Fluent $column)
     {
         if (! is_null($column->default)) {
-            return ' default '.$this->getDefaultValue($column->default);
+            $def = $this->getDefaultValue($column->default);
+            if($column->type=="integer"){
+                $def = intval(substr($def,1,-1));
+            }
+            if($column->type=="float"){
+                $def = floatval(substr($def,1,-1));
+            }
+            return ' default '.$def;;
         }
     }
 

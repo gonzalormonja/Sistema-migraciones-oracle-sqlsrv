@@ -18,25 +18,5 @@
 		"DB_HOST": "192.168.1.95",
 		"DB_PORT": "1521",
 		"DB_ENV" : "ORCL"
-	},
-		{
-		"TYPE" : "master" ,
-		"ENGINE": "mssql7",
-		"DB_NAME": "Optimum_Master2",
-		"DB_USER": "sa",
-		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "192.168.1.95",
-		"DB_PORT": "1433",
-		"DB_ENV" : "SQLEXPRESS"
-	},
-		{
-		"TYPE" : "client" ,
-		"ENGINE": "mssql7",
-		"DB_NAME": "Client4",
-		"DB_USER": "sa",
-		"DB_PASSWORD": "systemadministrator",
-		"DB_HOST": "192.168.1.95",
-		"DB_PORT": "1433",
-		"DB_ENV" : "SQLEXPRESS"
 	}
 ]

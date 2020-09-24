@@ -37,7 +37,16 @@ class Trigger
         if (! $table || ! $column || ! $triggerName || ! $sequenceName) {
             return false;
         }
-
+        $triggerName2 = explode(" ",$triggerName);
+        $triggerName = "";
+        foreach($triggerName2 as $n){
+            $triggerName .= $n;
+        }
+        $sequenceName2 = explode(" ",$sequenceName);
+        $sequenceName = "";
+        foreach($sequenceName2 as $n){
+            $sequenceName .= $n;
+        }
         if ($this->connection->getConfig('prefix_schema')) {
             $table        = $this->connection->getConfig('prefix_schema') . '.' . $table;
             $triggerName  = $this->connection->getConfig('prefix_schema') . '.' . $triggerName;
