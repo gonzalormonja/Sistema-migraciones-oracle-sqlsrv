@@ -1169,6 +1169,10 @@ end),
  (select top 1 tz_id from c_tz where tz = -3), 
  1, 
  1, 
+ 0, 
+null, 
+ 'NO_METER', 
+ 1);
 
  INSERT INTO m_brands_commands VALUES ((select command_id from m_commands where type= 1 and log = 1 and reg_type = 4),(select brand_id from m_meters_brands where brand = 'ELSTER' and model = 'A3' and version = '1.0'))
 

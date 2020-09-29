@@ -1,0 +1,6 @@
+
+FALLO AL EJECUTAR EL ARCHIVO Insert2.sql EN BASE DE DATOS Client2
+
+SQLSTATE:   42000
+code:   156
+message:   [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Incorrect syntax near the keyword 'INSERT'.
