@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateURolTable extends Migration
+class CreateMUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateURolTable extends Migration
      */
     public function up()
     {
-        Schema::create('u_rol', function (Blueprint $table) {
-            $table->string('rol_name', 16);
-            $table->string('rol_desc', 128)->nullable();
-            $table->integer('rol_enable');
-            $table->integer('client_id');
-            $table->increments('rol_id');
+        Schema::create('m_units', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('descr', 16);
         });
         $file = ".env";
         $isSqlServer=true;
@@ -31,14 +28,10 @@ class CreateURolTable extends Migration
             }
         }
         if($isSqlServer){
-            $sql = "DBCC checkident ('u_rol', reseed, 0);";
+            $sql = "DBCC checkident ('m_units', reseed, 0);";
             DB::unprepared($sql);
         }else{
-            $name = "U_ROL_"."ROL_ID_";
-            $sql = "SELECT SEQUENCE_NAME FROM all_sequences WHERE SEQUENCE_NAME LIKE '".$name."%'";
-            $resp = DB::select($sql)[0]->sequence_name;
-            $sql = "ALTER SEQUENCE ".$resp." MINVALUE 0";
-            DB::unprepared($sql);
+
         }
     }
 
@@ -49,6 +42,6 @@ class CreateURolTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('u_rol');
+        Schema::dropIfExists('m_units');
     }
 }

@@ -89,7 +89,11 @@
             echo shell_exec($command);
         //MIGRACION TERMINADA
         }
-        echo "\nLA MIGRACION TERMINO.";
+        echo "\nLA MIGRACION TERMINO\n";
+        echo "\nVERIFICANDO INSERTS\n";
+        $command = "php insertar.php";
+        echo shell_exec($command);
+        echo "\nEJECUCION TERMINADA\n";
     }else{
         echo "\nHAY ERRORES EN LA CONFIGURACION\n";
     }
@@ -115,6 +119,7 @@
             }   
             $dbConn = sqlsrv_connect($db['HOST'].','.$db['PORT'].$sidSql, $connectionInfo);
             if($dbConn){
+                sqlsrv_close($dbConn);
                 return true;
             }else{
                 $errores = sqlsrv_errors();

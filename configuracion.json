@@ -7,16 +7,16 @@
 		"DB_PASSWORD": "systemadministrator",
 		"DB_HOST": "192.168.1.95",
 		"DB_PORT": "1433",
-		"DB_ENV" : "SQLEXPRESS"
+		"DB_ENV" : ""
 	},
-		{
-		"TYPE" : "client" ,
-		"ENGINE": "OCI8",
-		"DB_NAME": "CLIENT1",
-		"DB_USER": "CLIENT1",
-		"DB_PASSWORD": "CLIENT1",
+	{
+		"TYPE" : "master" ,
+		"ENGINE": "mssql7",
+		"DB_NAME": "Optimum_Master2",
+		"DB_USER": "sa",
+		"DB_PASSWORD": "systemadministrator",
 		"DB_HOST": "192.168.1.95",
-		"DB_PORT": "1521",
-		"DB_ENV" : "ORCL"
+		"DB_PORT": "1433",
+		"DB_ENV" : ""
 	}
 ]

@@ -836,7 +836,7 @@ class SqlServerGrammar extends Grammar
     {
         if (! is_null($column->default)) {
             $def = $this->getDefaultValue($column->default);
-            if($column->type=="integer"){
+            if($column->type=="integer" || $column->type=="boolean"){
                 $def = intval(substr($def,1,-1));
             }
             if($column->type=="float"){
