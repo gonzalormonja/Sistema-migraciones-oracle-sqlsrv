@@ -1,0 +1,7 @@
+
+FALLO AL EJECUTAR EL ARCHIVO Insert1-EjecutaLineaLinea.sql EN BASE DE DATOS CLIENT1
+
+code:   900
+message:   ORA-00900: sentencia SQL no válida
+offset:   67
+sqltext:   --insert into m_brands_commands (command_id, brand_id) values (1,1)

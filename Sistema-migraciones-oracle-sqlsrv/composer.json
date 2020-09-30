@@ -19,6 +19,10 @@
 		{
             "type": "path",
             "url": "./include/1_oci8"
+        },
+		{
+            "type": "path",
+            "url": "./include/2_dbal"
         }
     ],
     "require": {

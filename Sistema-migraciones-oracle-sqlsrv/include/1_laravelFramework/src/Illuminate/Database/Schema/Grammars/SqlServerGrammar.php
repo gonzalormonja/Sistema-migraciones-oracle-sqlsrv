@@ -385,6 +385,9 @@ class SqlServerGrammar extends Grammar
      */
     protected function typeString(Fluent $column)
     {
+        if($column->length == -1){
+            $column->length = "MAX";
+        }
         return "varchar({$column->length})";
     }
 

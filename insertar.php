@@ -130,10 +130,125 @@ foreach($data2 as $d){
                 }
             }
         }
+        sqlsrv_close($conexion);
     }else{
-
+        if($db['TYPE']=="client"){
+            $dir = "Sistema-migraciones-oracle-sqlsrv/database/inserts/ORACLE/client/"; 
+        }else{
+            $dir = "Sistema-migraciones-oracle-sqlsrv/database/inserts/ORACLE/master/";
+        }
+        $archivos = scandir($dir);
+        $aEjecutar = [];
+        foreach($archivos as $archivo){
+            //cuarto veo si estan en migracion de la bd
+            if($archivo != "." && $archivo != ".."){
+                $sql = "SELECT COUNT(*) AS TOT FROM migrations WHERE migration LIKE 'insersion_de_script_".$archivo."'";
+                $resp = ejecutarConsulta($sql,$db,$conexion);
+                if($resp[0]['TOT']==0){
+                    $aEjecutar[] = $archivo;
+                }
+            }
+        }
+        foreach($aEjecutar as $archivo){
+            $p = explode("-",$archivo);
+            if($p[(count($p)-1)] == "EjecutaLineaLinea.sql"){
+                $fp = fopen($dir.$archivo, "r");  
+                $fileLines = array();
+                $todoOk = true;
+                while (!feof($fp)){
+                    $texto = fgets($fp);
+                    if(trim($texto)!=""){
+                        $sql = $texto;
+                        $sql = trim($sql);
+                        if(substr(trim($sql),0,2)!="--"){
+                            $tienePComa = substr($sql,-1);
+                            if($tienePComa===";"){
+                                $sql = substr($sql,0,-1);
+                            }
+                            $sql = oci_parse($conexion,$sql);
+                            $stmt = oci_execute($sql,OCI_NO_AUTO_COMMIT);
+                            if( $stmt === false ) {
+                                $date = new DateTime();
+                                $date = $date->format('Y-m-d H_i_s');
+                                $fh = fopen('./logs/'.$date.'.txt','w') or die("Se produjo un error al crear el archivo");
+                                $d = "\nFALLO AL EJECUTAR EL ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                                fwrite($fh, $d) or die("No se pudo escribir en el archivo");
+                                fwrite($fh, getErrorOracle(oci_error($sql))) or die("No se pudo escribir en el archivo");
+                                echo $d;
+                                var_dump(getErrorOracle(oci_error($sql)));
+                                $todoOk=false;
+                                oci_rollback($conexion);
+                                die();
+                            }
+                        }
+                    }
+                }
+                fclose($fp);
+                $sql = "INSERT INTO migrations(migration,batch)values(('insersion_de_script_'||'".$archivo."'),1)";
+                $sql = oci_parse($conexion,$sql);
+                $stmt = oci_execute($sql,OCI_NO_AUTO_COMMIT);
+                if( $stmt === false ) {
+                    $date = new DateTime();
+                    $date = $date->format('Y-m-d H_i_s');
+                    $fh = fopen('./logs/'.$date.'.txt','w') or die("Se produjo un error al crear el archivo");
+                    $d = "\nFALLO AL EJECUTAR EL ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                    fwrite($fh, $d) or die("No se pudo escribir en el archivo");
+                    fwrite($fh, getErrorOracle(oci_error($sql))) or die("No se pudo escribir en el archivo");
+                    echo $d;
+                    var_dump(getErrorOracle(oci_error($sql)));
+                    $todoOk=false;
+                    oci_rollback($conexion);
+                    die();
+                }
+                if($todoOk){
+                    echo "\nEJECUTADO CORRECTAMENTE ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                    oci_commit($conexion);
+                }
+            }else{
+                $sqls = file_get_contents($dir.$archivo);
+                $sqls = explode('/*cortoScript*/',$sqls);
+                $todoOk = true;
+                foreach($sqls as $sql){
+                    $sql = oci_parse($conexion,"BEGIN ".$sql." COMMIT; END;");
+                    $stmt = oci_execute($sql,OCI_NO_AUTO_COMMIT);
+                    if( $stmt === false ) {
+                        $date = new DateTime();
+                        $date = $date->format('Y-m-d H_i_s');
+                        $fh = fopen('./logs/'.$date.'.txt','w') or die("Se produjo un error al crear el archivo");
+                        $d = "\nFALLO AL EJECUTAR EL ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                        fwrite($fh, $d) or die("No se pudo escribir en el archivo");
+                        fwrite($fh, getErrorOracle(oci_error($sql))) or die("No se pudo escribir en el archivo");
+                        echo $d;
+                        var_dump(getErrorOracle(oci_error($sql)));
+                        $todoOk=false;
+                        oci_rollback($conexion);
+                        die();
+                    }
+                    //ahora quedaria insertar el archivo migrado en migraciones, pero por facilidades propias eso lo ejecutara diractamente el script
+                }
+                $sql = "INSERT INTO migrations(migration,batch)values(('insersion_de_script_'||'".$archivo."'),1)";
+                $sql = oci_parse($conexion,$sql);
+                $stmt = oci_execute($sql,OCI_NO_AUTO_COMMIT);
+                if( $stmt === false ) {
+                    $date = new DateTime();
+                    $date = $date->format('Y-m-d H_i_s');
+                    $fh = fopen('./logs/'.$date.'.txt','w') or die("Se produjo un error al crear el archivo");
+                    $d = "\nFALLO AL EJECUTAR EL ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                    fwrite($fh, $d) or die("No se pudo escribir en el archivo");
+                    fwrite($fh, getErrorOracle(oci_error($sql))) or die("No se pudo escribir en el archivo");
+                    echo $d;
+                    var_dump(getErrorOracle(oci_error($sql)));
+                    $todoOk=false;
+                    oci_rollback($conexion);
+                    die();
+                }
+                if($todoOk){
+                    echo "\nEJECUTADO CORRECTAMENTE ARCHIVO ".$archivo." EN BASE DE DATOS ".$db['DB']."\n";
+                    oci_commit($conexion);
+                }
+            }
+        }
     }
-    sqlsrv_close($conexion);
 }
 
 
@@ -148,12 +263,19 @@ function getErrorSqlServer($err){
     }
     return $resp;
 }
+function getErrorOracle($err){
+    $resp = "";
+    foreach($err as $i=>$e){
+        if(!intval($i) && $i!="0"){
+            $resp.="\n".$i.":   ".$e;
+        }
+    }
+    return $resp;
+}
 function ejecutarConsulta($sql,$db,$conn){
     if($db['ENGINE']=="mssql7"){
         $resp = sqlsrv_getall(sqlsrv_query($conn,$sql));
     }else{
-        $sql2 = "alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss'";
-        $resultOrigen = oci_exec($conn,$sql2);
         $resp = oci_exec($conn,$sql);
     }
     //return new FlexibleArray($resp);

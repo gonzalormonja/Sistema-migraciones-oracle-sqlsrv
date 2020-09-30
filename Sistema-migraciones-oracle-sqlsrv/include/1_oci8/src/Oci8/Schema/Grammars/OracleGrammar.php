@@ -464,7 +464,7 @@ class OracleGrammar extends Grammar
      */
     protected function typeString(Fluent $column)
     {
-        return $column->length<=4000 ? "varchar2({$column->length} char)" : "CLOB";
+        return $column->length<=4000 && $column->length > 0  ? "varchar2({$column->length} char)" : "CLOB";
     }
 
     /**
@@ -674,7 +674,7 @@ class OracleGrammar extends Grammar
      */
     protected function typeTime(Fluent $column)
     {
-        return 'date';
+        return 'varchar2(5 char)';
     }
 
     /**

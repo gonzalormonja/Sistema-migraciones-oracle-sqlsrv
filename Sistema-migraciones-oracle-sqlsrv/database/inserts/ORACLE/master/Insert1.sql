@@ -972,60 +972,40 @@ update s_menu_items SET menu_item_hlink ='monitor/CI' WHERE menu_item_name ='Mon
 update s_menu_items SET menu_item_hlink ='ci/eventos' WHERE menu_item_id = 20;
 
 
-        insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)
-        values((select max(menu_id)+1 from s_menu),'Importación','Importación','icon import-export','orange', 'Configuración&6;Importacion&' ||(select max(menu_id) + 1 from s_menu) ||';');
+        insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)values((select max(menu_id)+1 from s_menu),'Importación','Importación','icon import-export','orange', 'Configuración&6;Importacion&' ||(select max(menu_id) + 1 from s_menu) ||';');
     
-        insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor, menu_id,menu_item_fcolor,menu_item_size)
-        values ((select max(menu_item_id)+1 from s_menu_items),'Importación',1,'icon import-export','Importación',(select menu_id from s_menu where menu_name='Importación'),'orange',6,'fg-white','tile');
+        insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor, menu_id,menu_item_fcolor,menu_item_size)values ((select max(menu_item_id)+1 from s_menu_items),'Importación',1,'icon import-export','Importación',(select menu_id from s_menu where menu_name='Importación'),'orange',6,'fg-white','tile');
         
-        insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-        values(6,(select menu_item_id from s_menu_items where menu_item_name='Importación'),1,5);
+        insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values(6,(select menu_item_id from s_menu_items where menu_item_name='Importación'),1,5);
         
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,0,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,0,1);
         
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,1,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,1,1);
         
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,2,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación'),1,1,2,1);
 
    
         
-        insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)
-    	values((select max(menu_item_id)+1 from s_menu_items),'Importación PdM',2,'icon import-export','Importación PdM','puntos_medida_importacion_grid.php','orange',(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
+        insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Importación PdM',2,'icon import-export','Importación PdM','puntos_medida_importacion_grid.php','orange',(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
 
-        insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-        values((select menu_id from s_menu where menu_name='Importación'),(select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1);
+        insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values((select menu_id from s_menu where menu_name='Importación'),(select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1);
 
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,0,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,0,1);
 	
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,1,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,1,1);
 	
-        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-        values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,2,1);
+        insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación PdM'),1,1,2,1);
 
 
 		
 
-		insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,
-		menu_id,menu_item_fcolor,menu_item_size)
-		values((select max(menu_item_id)+1 from s_menu_items),'Importación Medidores',2,'icon import-export','Importación Medidores','medidores_importacion_grid.php','orange',
-		(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
+		insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Importación Medidores',2,'icon import-export','Importación Medidores','medidores_importacion_grid.php','orange',(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
 
-		insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-		values((select menu_id from s_menu where menu_name='Importación'),
-		(select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),
-		1,1);
+		insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values((select menu_id from s_menu where menu_name='Importación'),(select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1);
 
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,0,1);
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,1,1);
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,2,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,0,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,1,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Medidores'),1,1,2,1);
 
 
 
@@ -1033,20 +1013,15 @@ update s_menu_items SET menu_item_hlink ='ci/eventos' WHERE menu_item_id = 20;
 		
 
 	
-		insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)
-		values((select max(menu_item_id)+1 from s_menu_items),'Importación Clientes',2,'icon import-export','Importación Clientes','clientes_importacion_grid.php','orange',(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
+		insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Importación Clientes',2,'icon import-export','Importación Clientes','clientes_importacion_grid.php','orange',(select menu_id from s_menu where menu_name='Importación'),'fg-white','tile');
 
-		insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-		values((select menu_id from s_menu where menu_name='Importación'),(select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1);
+		insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values((select menu_id from s_menu where menu_name='Importación'),(select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1);
 
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,0,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,0,1);
 	
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,1,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,1,1);
 	
-		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-		values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,2,1);
+		insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Importación Clientes'),1,1,2,1);
 
 
 update s_menu_items SET menu_item_hlink ='tou/asignar-tarifas' WHERE menu_item_id = 98;
@@ -1054,158 +1029,104 @@ update s_menu_items SET menu_item_hlink ='tou/asignar-tarifas' WHERE menu_item_i
 update s_menu_items set menu_item_hlink = 'res/analisis-eventos' where menu_item_id = 82;
 
 
-insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)
-	values((select max(menu_id)+1 from s_menu),'Cubos','Cubos','icon cube','orange',
-	'Configuración&6;Cubos&' ||(select max(menu_id)+1 from s_menu) ||';');
+insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)values((select max(menu_id)+1 from s_menu),'Cubos','Cubos','icon cube','orange','Configuración&6;Cubos&' ||(select max(menu_id)+1 from s_menu) ||';');
 
-insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,
-	menu_id,menu_item_fcolor,menu_item_size)
-	values((select max(menu_item_id)+1 from s_menu_items),'Cubos',2,'icon cube','Cubos',
-	'cubo_config.php','orange',
-	6,'fg-white','tile');
+insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Cubos',2,'icon cube','Cubos','cubo_config.php','orange',6,'fg-white','tile');
 
-insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-	values(6,
-	(select menu_item_id from s_menu_items where menu_item_name='Cubos'),
-	1,5);
+insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values(6,(select menu_item_id from s_menu_items where menu_item_name='Cubos'),1,5);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select menu_item_id from s_menu_items where menu_item_name='Cubos'),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select menu_item_id from s_menu_items where menu_item_name='Cubos'),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Cubos'),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Cubos'),1,1,1,1);
 
-insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)
-	values((select max(menu_id)+1 from s_menu),'Registros y Eventos','Registros y Eventos','icon log-muc','green',
-	CONCAT('Herramientas y Servicios&5;Registros y Eventos&',CONCAT((select max(menu_id)+1 from s_menu),';')));
+insert into s_menu(menu_id,menu_name,menu_desc,menu_icon,menu_color,menu_item_route)values((select max(menu_id)+1 from s_menu),'Registros y Eventos','Registros y Eventos','icon log-muc','green',CONCAT('Herramientas y Servicios&5;Registros y Eventos&',CONCAT((select max(menu_id)+1 from s_menu),';')));
 
-insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,
-	menu_id,menu_item_fcolor,menu_item_size)
-	values((select max(menu_item_id)+1 from s_menu_items),'Registros y Eventos',1,'icon log-muc','Registros y Eventos',
-	(select max(menu_id) from s_menu),'green', 5,'fg-white','tile');
+insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Registros y Eventos',1,'icon log-muc','Registros y Eventos',(select max(menu_id) from s_menu),'green', 5,'fg-white','tile');
 
-insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-	values(5,
-	(select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),
-	1,8);
+insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values(5,(select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),1,8);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select menu_item_id from s_menu_items where menu_item_name='Registros y Eventos'),1,1,1,1);
 
 
-insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,
-                         menu_id,menu_item_fcolor,menu_item_size)
-values((select max(menu_item_id)+1 from s_menu_items),'Registros de Sistema',2,'icon log-muc','Registros de Sistema',
-       'monitor_client.php','green', (select menu_id from s_menu where menu_name = 'Registros y Eventos'),'fg-white','tile');
+insert into s_menu_items(menu_item_id,menu_item_name,menu_item_type,menu_item_icono,menu_item_text,menu_item_hlink,menu_item_bgcolor,menu_id,menu_item_fcolor,menu_item_size)values((select max(menu_item_id)+1 from s_menu_items),'Registros de Sistema',2,'icon log-muc','Registros de Sistema','monitor_client.php','green', (select menu_id from s_menu where menu_name = 'Registros y Eventos'),'fg-white','tile');
 
-insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)
-values((select menu_id from s_menu where menu_name = 'Registros y Eventos'),
-       (select max(menu_item_id) from s_menu_items),
+insert into s_menu_topology(menu_id,menu_item_id,menu_col,menu_order)values((select menu_id from s_menu where menu_name = 'Registros y Eventos'),(select max(menu_item_id) from s_menu_items),
        1,1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 
-insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)
-values ((select max(menu_id) + 1 from s_menu), 'Registros Instantáneos', 'Registros Instantáneos', 0, '', 'yellow', 'C I&3;Registros Instantáneos&25;');
+insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)values ((select max(menu_id) + 1 from s_menu), 'Registros Instantáneos', 'Registros Instantáneos', 0, '', 'yellow', 'C I&3;Registros Instantáneos&25;');
 
 update s_menu_items set menu_item_type = 1, menu_item_hlink = (select max(menu_id) from s_menu) where menu_item_id = (select menu_item_id from s_menu_items where menu_item_hlink = 'regInstantaneos.php?t=2');
 
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Registros Instantáneos', 2, 'icon instant-records', 'text', 'regInstantaneos.php?t=2', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Registros Instantáneos', 2, 'icon instant-records', 'text', 'regInstantaneos.php?t=2', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 
 -- Cubo de IR
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo de Registros Instantáneos', 2, 'icon cube', 'text', 'cubo_regInstantaneos.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo de Registros Instantáneos', 2, 'icon cube', 'text', 'cubo_regInstantaneos.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 
 
 
 -- Registros de Facturacion
 
-insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)
-values ((select max(menu_id) + 1 from s_menu), 'Registros de Facturación', 'Registros de Facturación', 0, '', 'yellow', 'C I&3;Registros de Facturación&26;');
+insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)values ((select max(menu_id) + 1 from s_menu), 'Registros de Facturación', 'Registros de Facturación', 0, '', 'yellow', 'C I&3;Registros de Facturación&26;');
 
 update s_menu_items set menu_item_type = 1, menu_item_hlink = (select max(menu_id) from s_menu) where menu_item_id = (select menu_item_id from s_menu_items where menu_item_hlink = 'regFacturacion.php?t=2');
 
 
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Registros de Facturación', 2, 'icon instant-registration', 'text', 'regFacturacion.php?t=2', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Registros de Facturación', 2, 'icon instant-registration', 'text', 'regFacturacion.php?t=2', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 -- Cubo de Facturacion
 
 
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo Registros de Facturación', 2, 'icon cube', 'text', 'cubo_regFacturacion.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo Registros de Facturación', 2, 'icon cube', 'text', 'cubo_regFacturacion.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 
 -- Eventos
 
 
-insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)
-values ((select max(menu_id) + 1 from s_menu), 'Eventos', 'Eventos', 0, '', 'yellow', 'C I&3;Eventos&27;');
+insert into s_menu (menu_id, menu_name, menu_desc, menu_main, menu_icon, menu_color, menu_item_route)values ((select max(menu_id) + 1 from s_menu), 'Eventos', 'Eventos', 0, '', 'yellow', 'C I&3;Eventos&27;');
 
 update s_menu_items set menu_item_type = 1, menu_item_hlink = (select max(menu_id) from s_menu) where menu_item_id = (select menu_item_id from s_menu_items where menu_item_hlink = 'ci/eventos');
 
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Eventos', 2, 'icon events', 'text', 'ci/eventos', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Eventos', 2, 'icon events', 'text', 'ci/eventos', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,1,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 
 -- Cubo de Eventos
 
 
-insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)
-VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo de Eventos', 2, 'icon cube', 'text', 'cubo_eventos.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
+insert into s_menu_items(menu_item_id, menu_item_name, menu_item_type, menu_item_icono, menu_item_text, menu_item_hlink, menu_item_bgcolor, menu_id, menu_item_fcolor, menu_item_size)VALUES((select max(menu_item_id) + 1 from s_menu_items), 'Cubo de Eventos', 2, 'icon cube', 'text', 'cubo_eventos.php', 'yellow', (select max(menu_id) from s_menu), 'fg-white', 'tile');
 
-insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)
-values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
+insert into s_menu_topology(menu_id, menu_item_id, menu_col, menu_order)values ((select max(menu_id) from s_menu), (select max(menu_item_id) from s_menu_items), 1, 1);
 
-insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
-values((select max(menu_item_id) from s_menu_items),1,1,0,1);
+insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)values((select max(menu_item_id) from s_menu_items),1,1,0,1);
 insert into s_rol_menu(menu_item_id,item_visible,item_permission,rol_id,permission)
 values((select max(menu_item_id) from s_menu_items),1,1,1,1);
 

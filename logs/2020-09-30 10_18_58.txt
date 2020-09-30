@@ -1,0 +1,7 @@
+
+FALLO AL EJECUTAR EL ARCHIVO Insert1.sql EN BASE DE DATOS OPTIMUM
+
+code:   933
+message:   ORA-00933: comando SQL no terminado correctamente
+offset:   88
+sqltext:   INSERT INTO migrations(migration,batch)values(('insersion_de_script_'||'Insert1.sql'),1);

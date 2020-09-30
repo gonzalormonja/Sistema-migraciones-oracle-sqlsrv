@@ -1,0 +1,7 @@
+
+FALLO AL EJECUTAR EL ARCHIVO Insert1-EjecutaLineaLinea.sql EN BASE DE DATOS CLIENT1
+
+code:   905
+message:   ORA-00905: falta una palabra clave
+offset:   32
+sqltext:   ALTER SESSION SET CONSTRAINTS = DEFERREDINSERT INTO C_TZ (tz, tz_desc) values (NULL,'Desconocido')

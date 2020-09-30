@@ -1,6 +1,26 @@
 [
 	{
 		"TYPE" : "client" ,
+		"ENGINE": "OCI8",
+		"DB_NAME": "CLIENT1",
+		"DB_USER": "CLIENT1",
+		"DB_PASSWORD": "CLIENT1",
+		"DB_HOST": "192.168.1.95",
+		"DB_PORT": "1521",
+		"DB_ENV" : "ORCL"
+	},
+	{
+		"TYPE" : "master" ,
+		"ENGINE": "OCI8",
+		"DB_NAME": "OPTIMUM",
+		"DB_USER": "OPTIMUM",
+		"DB_PASSWORD": "OPTIMUM",
+		"DB_HOST": "192.168.1.95",
+		"DB_PORT": "1521",
+		"DB_ENV" : "ORCL"
+	},
+		{
+		"TYPE" : "client" ,
 		"ENGINE": "mssql7",
 		"DB_NAME": "Client2",
 		"DB_USER": "sa",

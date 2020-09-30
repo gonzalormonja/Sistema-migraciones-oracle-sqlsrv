@@ -1126,6 +1126,7 @@ INSERT INTO m_meters_templates (proto_id, type, parameter, value, brand_id) VALU
 
 
 
+
 update m_task_err_codes set error_desc = 'El puerto no esta operativo en el agente' where error_code = -16
 update m_task_err_codes set error_desc = 'El puerto no esta listo en el agente' where error_code = -17
 insert into m_task_err_codes (error_code, error_desc) values (-38, 'El hanger contiene mas lineas que las soportadas')
@@ -1137,7 +1138,7 @@ insert into m_task_err_codes (error_code, error_desc) values (-51, 'Error en la 
 insert into m_task_err_codes (error_code, error_desc) values (-52, 'No todos los datos se insertaron en la base (archivo PORTABLE)')
 insert into m_task_err_codes (error_code, error_desc) values (-53, 'El meter procesado no se encontró en la base o posee un sched_id incorrecto (archivo PORTABLE)')
 insert into m_task_err_codes (error_code, error_desc) values (-54, 'El meter procesado posee un brand, model y/o version incorrectos (archivo PORTABLE)')
-
+insert into m_phy_protos (proto_id, description) values (3, 'Optical')
  INSERT INTO  m_meters 
 (sched_id, 
  meter_id, 
@@ -1162,7 +1163,7 @@ end),
  'NO_METER',
  (select brand_id from m_meters_brands where brand = 'NOBRAND' and model = 'NOMODEL'),
  (select top 1 tz from c_tz where tz = -3), 
- (select proto_id from m_phy_protos where description = 'TCP/IP'), 
+ (select proto_id from m_phy_protos where description = 'Optical'), 
  1, 
  255, 
  1, 

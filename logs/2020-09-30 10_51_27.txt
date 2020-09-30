@@ -1,0 +1,7 @@
+
+FALLO AL EJECUTAR EL ARCHIVO  EN BASE DE DATOS CLIENT1
+
+code:   922
+message:   ORA-00922: falta la opción o no es válida
+offset:   40
+sqltext:   ALTER SESSION SET CONSTRAINTS = DEFERRED;
