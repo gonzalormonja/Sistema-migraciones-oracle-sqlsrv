@@ -1,7 +1,0 @@
-
-FALLO AL EJECUTAR EL ARCHIVO Insert1-EjecutaLineaLinea.sql EN BASE DE DATOS CLIENT1
-
-code:   2291
-message:   ORA-02291: restricción de integridad (CLIENT1.FK_M_BRANDS_COMMANDS_M_METERS_BRANDS) violada - clave principal no encontrada
-offset:   0
-sqltext:   insert into m_brands_commands (command_id, brand_id) values (2,4)

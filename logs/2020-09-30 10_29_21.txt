@@ -1,7 +1,0 @@
-
-FALLO AL EJECUTAR EL ARCHIVO Insert1-EjecutaLineaLinea.sql EN BASE DE DATOS CLIENT1
-
-code:   933
-message:   ORA-00933: comando SQL no terminado correctamente
-offset:   94
-sqltext:   INSERT INTO C_CITY (city, cp, state, country) VALUES ('Rosario','2000','Santa Fe','Argentina');

@@ -1,0 +1,7 @@
+
+FALLO AL EJECUTAR EL ARCHIVO Insert1-EjecutaLineaLinea.sql EN BASE DE DATOS CLIENT1
+
+code:   942
+message:   ORA-00942: la tabla o vista no existe
+offset:   12
+sqltext:   INSERT INTO C_CITY (city, cp, state, country) VALUES ('Desconocido','Desconocido','Desconocido','Desconocido')

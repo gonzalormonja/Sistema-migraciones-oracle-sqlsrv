@@ -1,7 +1,0 @@
-
-FALLO AL EJECUTAR EL ARCHIVO  EN BASE DE DATOS CLIENT1
-
-code:   927
-message:   ORA-00927: falta el signo de igual
-offset:   30
-sqltext:   ALTER SESSION SET CONSTRAINTS ALL DEFERRED

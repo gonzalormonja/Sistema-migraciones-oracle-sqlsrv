@@ -210,7 +210,6 @@ GO
 
 
 /*
- 
 CREATE TABLE Client2.dbo.migrations (
 	id int IDENTITY(1,1) NOT NULL,
 	migration varchar(255) COLLATE Modern_Spanish_CI_AS NOT NULL,

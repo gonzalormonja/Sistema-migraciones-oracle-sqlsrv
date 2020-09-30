@@ -29,7 +29,7 @@ class CreateCTzTable extends Migration
             }
         }
         if($isSqlServer){
-            $sql = "DBCC checkident ('c_tz_', reseed, 0);";
+            $sql = "DBCC checkident ('c_tz', reseed, 0);";
             DB::unprepared($sql);
         }else{
             $name = "C_TZ_"."TZ_ID";

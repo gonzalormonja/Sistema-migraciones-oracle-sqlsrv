@@ -1,9 +1,0 @@
-
-FALLO AL EJECUTAR EL ARCHIVO Insert1.sql EN BASE DE DATOS OPTIMUM
-
-code:   933
-message:   ORA-00933: comando SQL no terminado correctamente
-offset:   70
-sqltext:   --Tabla u_auth_type
-insert into u_auth_type values('LOCAL',0,'LOCAL'); 
-insert into u_auth_type values('LDAP',1,'LDAP');
